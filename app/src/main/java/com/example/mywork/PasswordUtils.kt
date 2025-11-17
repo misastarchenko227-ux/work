@@ -5,6 +5,8 @@ import javax.crypto.SecretKeyFactory
 import javax.crypto.spec.PBEKeySpec
 import android.util.Base64
 
+//need check this block of code and try improve it and optimize
+
 object PasswordUtils {
     fun generateSalt(length: Int = 16): ByteArray { //Создаёт массив случайных байт длиной length (по умолчанию 16 байт).
         val salt = ByteArray(length)
