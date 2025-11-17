@@ -19,7 +19,9 @@
             app:avatarViewBorderWidth="3dp"
             app:avatarViewIndicatorEnabled="false"
             app:avatarViewShape="circle"
+            android:background="@drawable/avatar_shape"
             app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/stream"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
