@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 
 import android.widget.TextView
 import android.widget.Toast
@@ -26,7 +27,7 @@ class Account : Fragment(R.layout.fragment_account) {
         ViewModelProvider.AndroidViewModelFactory(requireActivity().application)
     }
 
-    private lateinit var avatarView: AvatarView
+    private lateinit var avatarView: ImageView
     private lateinit var cardButton: Button
     private lateinit var nameText: TextView
     private lateinit var emailText: TextView
