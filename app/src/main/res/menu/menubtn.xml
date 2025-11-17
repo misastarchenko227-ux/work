@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/accountFragment"
+        android:icon="@drawable/baseline_account_circle_24"
+        android:title="Аккаунт" />
+
+    <item
+        android:id="@+id/searchFragment"
+        android:icon="@drawable/baseline_apps_24"
+        android:title="Поиск" />
+
+    <item
+        android:id="@+id/messgeFragment"
+        android:icon="@drawable/messge"
+        android:title="Сообщения" />
+
+    <item
+        android:id="@+id/customizationFragment"
+        android:icon="@drawable/baseline_miscellaneous_services_24"
+        android:title="Настройки" />
+
+</menu>
