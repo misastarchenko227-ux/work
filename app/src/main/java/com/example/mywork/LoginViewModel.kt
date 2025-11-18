@@ -2,6 +2,7 @@ package com.example.mywork
 
 import android.app.Application
 import android.content.Context.MODE_PRIVATE
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
@@ -13,8 +14,9 @@ class LoginViewModel(app: Application) : AndroidViewModel(app) {
     fun repeatEntrance(email: String, password: String, onResult: (Boolean, String) -> Unit) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
+                Log.d("LoginViewModel", "Попытка входа с $email и $password")
                 val response = RetrofitClient.api.entranceAccount(LoginRequest(email, password))
-
+                Log.d("LOGIN_DEBUG", "Ответ сервера: status=${response.status}, message=${response.message}")
                 val ok = response.status == true
                 val message = response.message ?: ""
 
@@ -46,6 +48,7 @@ class LoginViewModel(app: Application) : AndroidViewModel(app) {
                 }
 
             } catch (e: Exception) {
+                Log.e("LOGIN_DEBUG2", "Ошибка: ${e.message}", e)
                 withContext(Dispatchers.Main) {
                     onResult(false, "Ошибка входа")
                 }
