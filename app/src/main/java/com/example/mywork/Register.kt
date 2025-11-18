@@ -32,3 +32,17 @@ data class SetUsernameRequest(
 data class SetUsernameResponse(
     val message: String,
 val username:Boolean)
+
+@Serializable
+data class LoginRequest(
+    val email: String,
+    val password: String
+)
+
+@Serializable
+data class LoginResponse(
+    val status: Boolean,
+    val message: String?,
+    val token: String?
+)
+

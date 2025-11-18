@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
             finish()
         }else{
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, LoginFragment())
+                .replace(R.id.fragment_container, LoginUser())
                 .commit()
         }
     }
