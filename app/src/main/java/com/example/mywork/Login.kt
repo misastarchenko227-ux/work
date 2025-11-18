@@ -3,6 +3,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.CheckBox
@@ -20,10 +21,9 @@ class LoginUser : Fragment(R.layout.fragment_login) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val emailField: EditText = view.findViewById(R.id.Email)
+        val emailField: EditText = view.findViewById(R.id.email)
         val passwordField: EditText = view.findViewById(R.id.Password)
         val loginButton: Button = view.findViewById(R.id.button)
-        val progressBar: ProgressBar = view.findViewById(R.id.progressBar)
         val checkBox: CheckBox = view.findViewById(R.id.checkBox)
 
         val prefs = requireActivity()
@@ -54,11 +54,10 @@ class LoginUser : Fragment(R.layout.fragment_login) {
                 }
             }
 
-            progressBar.visibility = View.VISIBLE
+
             loginButton.isEnabled = false
 
             viewModel.repeatEntrance(email, password) { success, message ->
-                progressBar.visibility = View.GONE
                 loginButton.isEnabled = true
 
                 if (success) {
@@ -76,6 +75,7 @@ class LoginUser : Fragment(R.layout.fragment_login) {
 
                 } else {
                     Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+                    Log.d("LoginUser", message)
                 }
             }
         }

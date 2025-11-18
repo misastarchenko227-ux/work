@@ -15,13 +15,13 @@ class MainActivity : AppCompatActivity() {
         prefs = getSharedPreferences("user_data",Context.MODE_PRIVATE)
         val rememberMe = prefs.getBoolean("remember_me", false)
         if (rememberMe){
-            val intent = Intent( this, screnShop::class.java)
-            startActivity(intent)
-            finish()
-        }else{
             supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, LoginUser())
                 .commit()
+        }else{
+            val intent = Intent( this, screnShop::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }
