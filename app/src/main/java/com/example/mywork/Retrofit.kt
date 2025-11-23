@@ -60,7 +60,7 @@ object RetrofitClient {
   } catch (e: Exception) {
    throw RuntimeException(e)
   }
- }
+ }//rpo'fkpjlkdejkojkp
 
  /**
   * ✅ Инициализация Retrofit API клиента
