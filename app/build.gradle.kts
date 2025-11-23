@@ -1,9 +1,14 @@
 
 
+
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("org.jetbrains.kotlin.plugin.serialization") version "2.0.0" // или актуальная
+    //id ("com.android.application") version "8.0.2"
+   // id ("org.jetbrains.kotlin.android")
+    id ("kotlin-kapt") // Add this line
 }
 
 android {
@@ -49,6 +54,7 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.recyclerview)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -61,7 +67,8 @@ dependencies {
     implementation (libs.stripe.android)
         //для аватара
     implementation("io.getstream:avatarview-coil:1.0.7")
-
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+        kapt ("com.github.bumptech.glide:compiler:4.16.0")
 
 
 }

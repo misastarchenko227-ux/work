@@ -13,15 +13,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         prefs = getSharedPreferences("user_data",Context.MODE_PRIVATE)
-        val rememberMe = prefs.getBoolean("remember_me", false)
+        val rememberMe = prefs.getBoolean("remember_me", true)
         if (rememberMe){
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, LoginUser())
-                .commit()
-        }else{
             val intent = Intent( this, screnShop::class.java)
             startActivity(intent)
             finish()
+        }else{
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, RegisterUser())
+                .commit()
         }
     }
 }

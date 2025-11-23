@@ -1,5 +1,8 @@
 package com.example.mywork
 
+import android.media.Image
+import android.widget.ImageView
+import androidx.compose.ui.platform.ValueElement
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -45,4 +48,11 @@ data class LoginResponse(
     val message: String?,
     val token: String?
 )
+
+data class Product(
+    val id: String,
+    val imageUrl: String,
+    val title: String,
+    val price: Double,
+    val stock: Int)
 

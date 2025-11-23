@@ -12,4 +12,5 @@
 <string name="put">положить деньги</string>
     <string name="takeoff"> снять деньги</string>
     <string name="uz">ваше имя</string>
+    <string name="search">поиск</string>
 </resources>
