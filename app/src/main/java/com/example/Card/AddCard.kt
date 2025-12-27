@@ -1,9 +1,10 @@
-package com.example.mywork
+package com.example.Card
 
 import android.text.Editable
 import android.text.InputFilter
 import android.text.TextWatcher
 import android.util.Log
+import android.widget.EditText
 
 
 open class AddCardBase() {
@@ -61,7 +62,7 @@ class CardNumberFormattingWatcher : TextWatcher {
             try {
                 // Если текст не пустой, устанавливаем курсор
               if(current.isEmpty()){
-                  val editText = s.javaClass.getField("mTextView").get(s)as? android.widget.EditText
+                  val editText = s.javaClass.getField("mTextView").get(s)as? EditText
                   editText?.setSelection(current.length)
               }
             } catch (e:Exception){

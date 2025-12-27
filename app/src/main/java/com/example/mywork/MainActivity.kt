@@ -4,7 +4,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
+import com.example.Users.RegisterUser
 import kotlin.jvm.java
 
 class MainActivity : AppCompatActivity() {
@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         prefs = getSharedPreferences("user_data",Context.MODE_PRIVATE)
         val rememberMe = prefs.getBoolean("remember_me", true)
         if (rememberMe){
-            val intent = Intent( this, screnShop::class.java)
+            val intent = Intent( this, ScrenAccount::class.java)
             startActivity(intent)
             finish()
         }else{

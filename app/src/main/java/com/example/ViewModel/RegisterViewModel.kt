@@ -1,10 +1,12 @@
-package com.example.mywork
+package com.example.ViewModel
 
 import android.app.Application
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.Data.RegisterRequest
+import com.example.mywork.PasswordUtils
+import com.example.mywork.RetrofitClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -60,4 +62,3 @@ class RegisterViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
 }
-

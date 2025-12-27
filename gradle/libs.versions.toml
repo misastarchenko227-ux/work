@@ -24,6 +24,7 @@ stripeAndroid = "21.28.0"
 recyclerview = "1.4.0"
 avatarviewCoil = "1.0.7"
 glide = "5.0.5"
+roomCommonJvm = "2.8.4"
 
 
 [libraries]
@@ -50,6 +51,7 @@ stripe-android = { module = "com.stripe:stripe-android", version.ref = "stripeAn
 androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
 avatarview-coil = { group = "io.getstream", name = "avatarview-coil", version.ref = "avatarviewCoil" }
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+androidx-room-common-jvm = { group = "androidx.room", name = "room-common-jvm", version.ref = "roomCommonJvm" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -10,7 +10,11 @@
         android:id="@+id/searchFragment"
         android:icon="@drawable/baseline_apps_24"
         android:title="Поиск" />
-
+<item
+    android:id="@+id/addProduct"
+    android:icon="@drawable/add_product"
+    android:title="Добавить товар" />
+    />
     <item
         android:id="@+id/messgeFragment"
         android:icon="@drawable/messge"

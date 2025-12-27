@@ -9,6 +9,7 @@ plugins {
     //id ("com.android.application") version "8.0.2"
    // id ("org.jetbrains.kotlin.android")
     id ("kotlin-kapt") // Add this line
+    id("kotlin-parcelize")
 }
 
 android {
@@ -54,6 +55,7 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.recyclerview)
+    implementation(libs.androidx.room.common.jvm)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -69,6 +71,6 @@ dependencies {
     implementation("io.getstream:avatarview-coil:1.0.7")
     implementation ("com.github.bumptech.glide:glide:4.16.0")
         kapt ("com.github.bumptech.glide:compiler:4.16.0")
-
-
+    implementation("androidx.appcompat:appcompat:1.4.1")
+    implementation("androidx.activity:activity-ktx:1.4.0")
 }

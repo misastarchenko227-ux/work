@@ -1,10 +1,13 @@
-package com.example.mywork
+package com.example.ViewModel
 
 import android.app.Application
 import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.Data.SetUsernameRequest
+import com.example.Data.UsernameCheckRequest
+import com.example.mywork.RetrofitClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -24,7 +27,12 @@ class AccountViewModel(private val app: Application) : AndroidViewModel(app) {
 
                 if (ok) {
                     // 🔹 Сохраняем имя на сервере
-                    val setResponse = RetrofitClient.api.setUsername(SetUsernameRequest(email, username))
+                    val setResponse = RetrofitClient.api.setUsername(
+                        SetUsernameRequest(
+                            email,
+                            username
+                        )
+                    )
 
                     if (setResponse.username) {
                         // 🔹 Если сервер подтвердил — сохраняем локально

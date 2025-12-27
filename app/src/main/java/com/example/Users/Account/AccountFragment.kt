@@ -1,4 +1,4 @@
-package com.example.mywork
+package com.example.Users.Account
 import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
@@ -16,9 +16,11 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.navGraphViewModels
 import coil.load
-import coil.transform.CircleCropTransformation
-import io.getstream.avatarview.AvatarView
+import com.example.ViewModel.AccountViewModel
+import com.example.mywork.R
 import kotlinx.coroutines.launch
 
 class Account : Fragment(R.layout.fragment_account) {
@@ -26,7 +28,7 @@ class Account : Fragment(R.layout.fragment_account) {
     private val viewModel: AccountViewModel by viewModels {
         ViewModelProvider.AndroidViewModelFactory(requireActivity().application)
     }
-
+private lateinit var myOrders: Button
     private lateinit var avatarView: ImageView
     private lateinit var cardButton: Button
     private lateinit var nameText: TextView
@@ -53,7 +55,10 @@ class Account : Fragment(R.layout.fragment_account) {
         emailText = view.findViewById(R.id.textEmail)
         usernameEdit = view.findViewById(R.id.editTextText)
         saveNameButton = view.findViewById(R.id.buttonName)
+        myOrders = view.findViewById(R.id.my_orders)
 
+
+        // 🔹 Получение SharedPreferences
         sharedPref = requireContext().getSharedPreferences("user_data", Context.MODE_PRIVATE)
 
         // Показываем пользователя из SharedPreferences
@@ -62,38 +67,15 @@ class Account : Fragment(R.layout.fragment_account) {
 
         // Загрузка сохранённого аватара
         loadAvatar()
-
         // 🔹 Смена аватара
-        avatarView.setOnClickListener {
-            imagePicker.launch("image/*")
-        }
-
+        changingAvatar()
         // 🔹 Сохранение имени
-        saveNameButton.setOnClickListener {
-            val username = usernameEdit.text.toString().trim()
-            val email = sharedPref.getString("email", null)
-
-            if (username.isEmpty()) {
-                usernameEdit.error = "Введите имя"
-                return@setOnClickListener
-            }
-
-            saveNameButton.isEnabled = false
-            saveNameButton.alpha = 0.5f
-
-            viewLifecycleOwner.lifecycleScope.launch {
-                viewModel.addName(username, email ?: "", username)
-                sharedPref.edit().putString("names", username).apply()
-                nameText.text = username
-                saveNameButton.isEnabled = true
-                saveNameButton.alpha = 1f
-            }
-        }
+        saveName()
 
         // Кнопка добавления карты
-        cardButton.setOnClickListener {
-            Toast.makeText(requireContext(), "Переход к добавлению карты", Toast.LENGTH_SHORT).show()
-        }
+        addCard()
+        myOrderProduct()
+
     }
 
     private fun saveAvatar(uri: Uri) {
@@ -114,4 +96,46 @@ class Account : Fragment(R.layout.fragment_account) {
             )
         }
     }
+
+    private fun changingAvatar() {
+        avatarView.setOnClickListener {
+            imagePicker.launch("image/*")
+        }
+    }
+
+    private fun saveName() {
+        saveNameButton.setOnClickListener {
+            val username = usernameEdit.text.toString().trim()
+            val email = sharedPref.getString("email", null)
+
+            if (username.isEmpty()) {
+                usernameEdit.error = "Введите имя"
+                return@setOnClickListener
+            }
+
+            saveNameButton.isEnabled = false
+            saveNameButton.alpha = 0.5f
+
+            viewLifecycleOwner.lifecycleScope.launch {
+                viewModel.addName(username, email ?: "", username)
+                sharedPref.edit().putString("names", username).apply()
+                nameText.text = username
+                saveNameButton.isEnabled = true
+                saveNameButton.alpha = 1f
+            }
+        }
+    }
+
+    private fun addCard() {
+        cardButton.setOnClickListener {
+            Toast.makeText(requireContext(), "Переход к добавлению карты", Toast.LENGTH_SHORT)
+                .show()
+        }
+    }
+    private fun myOrderProduct(){
+        myOrders.setOnClickListener {
+            findNavController().navigate(R.id.orderProduct)
+        }
+    }
+
 }

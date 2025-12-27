@@ -1,4 +1,4 @@
-package com.example.mywork
+package com.example.Card
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.mywork.R
 
 class AddCardFragment : Fragment() {
     private lateinit var etCardNumber: EditText
